@@ -10,6 +10,8 @@ import Vue from 'vue'
 
 const requireComponent = require.context('@/components', true, /\.vue$/)
 
+// console.log('requireComponent', requireComponent.keys())
+
 for (const file of requireComponent.keys()) {
   const componentConfig = requireComponent(file)
 

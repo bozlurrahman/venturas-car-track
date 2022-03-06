@@ -6,10 +6,16 @@
     "serve": "vue-cli-service serve",
     "dev": "yarn serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "postversion": "node scripts/postversion.js"
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint",
+    "fix": "./node_modules/.bin/eslint --fix . --ext .js,.vue src",
+    "api:mock": "node api-server/server",
+    "api:mock:slow": "API_SLEEP=2000 node api-server/server",
+    "dev2": "concurrently -n mock,server -k \"npm:api:mock\" \"npm run serve\""
   },
   "dependencies": {
+    "json-server": "0.15.0",
+    "vee-validate": "^3.4.14",
     "vue": "^2.6.11",
     "vue-meta": "^2.3.3",
     "vue-router": "^3.1.6",
